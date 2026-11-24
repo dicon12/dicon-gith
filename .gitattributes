@@ -1,0 +1,17 @@
+# Text files: stored with LF; checked out with the platform's line endings.
+* text=auto
+
+# Never touch line endings in binary files (some PDFs look like text to git).
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.avif binary
+*.ico  binary
+*.mp4  binary
+*.webm binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary

@@ -21,3 +21,5 @@ _headers
 .env
 .env.*
 .vercel
+.gitattributes
+.gitignore

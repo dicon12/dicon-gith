@@ -21,6 +21,7 @@
 /.env                     /404.html  404!
 /.firebaserc              /404.html  404!
 /.gitignore               /404.html  404!
+/.gitattributes           /404.html  404!
 /.dockerignore            /404.html  404!
 /.vercelignore            /404.html  404!
 /.claude/*                /404.html  404!
