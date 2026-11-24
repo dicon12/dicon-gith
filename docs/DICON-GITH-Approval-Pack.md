@@ -6,12 +6,11 @@ Please read each part, mark it Approved or send corrections, and sign at the end
 
 ## Part A. Contact email
 
-| Where it shows | Current (placeholder) | Approved email (DICON to fill in) |
-|---|---|---|
-| Landing page footer, About page, dashboard help, support text | dicongith@gmail.com | ______________________________ |
-| Support text in the older demo app screens | support@dicon-gith.gov.ng | ______________________________ |
+All contact details on the website (landing page footer, About page, dashboard help, support text, Terms section 23) use one address:
 
-Use an official DICON mailbox that a named officer checks daily.
+**dicongith@gmail.com**
+
+This mailbox should be checked daily by a named officer.
 
 ## Part B. Privacy Policy (current text)
 
