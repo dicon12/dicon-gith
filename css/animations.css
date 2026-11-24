@@ -185,7 +185,7 @@
 .lang-select { padding: 0 10px; }
 .theme-toggle { width: 38px; display: grid; place-items: center; font-size: 16px; }
 .lang-select:hover, .theme-toggle:hover { border-color: var(--deep-forest); }
-@media (max-width: 1100px) { .header-tools .lang-select { max-width: 74px; } }
+/* (old 1100px language-box cap removed: js/header-fit.js now makes room instead) */
 @media (max-width: 560px) { .header-tools { display: none; } .drawer-tools { display: flex !important; } }
 .drawer-tools { display: none; gap: 10px; margin-top: 10px; }
 
@@ -212,5 +212,4 @@
 
 /* Header fit: keep nav on one line even with the language/theme tools and longer translations */
 .nav-link, .header-login-link, .brand-title, .brand-sub { white-space: nowrap; }
-@media (max-width: 1360px) { .nav-links { gap: 16px !important; } .nav-link { font-size: 13px; } .brand-sub { display: none; } .header-actions .btn-landing-amber { padding: 10px 16px; } }
-@media (max-width: 1180px) { .nav-links { gap: 12px !important; } .header-login-link { display: none; } }
+/* Fitting steps (hf-1 ... hf-4) are in landing.css and js/header-fit.js. */

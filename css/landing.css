@@ -306,6 +306,20 @@ a {
   padding: 6px;
 }
 
+/* Header fit (js/header-fit.js measures and adds hf-1 ... hf-4 until the header fits on one line) */
+.site-header .header-container { max-width: 1540px; gap: 20px; }
+.header-container > * { flex-shrink: 0; }
+.nav-link, .header-login-link, .brand-title, .brand-sub { white-space: nowrap; }
+.site-header.hf-1 .nav-links { gap: 16px; }
+.site-header.hf-1 .nav-link { font-size: 13px; }
+.site-header.hf-1 .brand-sub { display: none; }
+.site-header.hf-1 .header-actions { gap: 10px; }
+.site-header.hf-1 .header-actions .btn-landing-amber { padding: 10px 16px; }
+.site-header.hf-2 .header-actions .header-login-link[href="/about"] { display: none; }
+.site-header.hf-3 nav { display: none; }
+.site-header.hf-3 .mobile-menu-toggle { display: block; }
+.site-header.hf-4 .header-actions .header-login-link { display: none; }
+
 /* Mobile Drawer */
 .mobile-nav-drawer {
   display: none;
