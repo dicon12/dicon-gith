@@ -37,13 +37,13 @@ We process personal data on one or more of these bases under the NDPA: your cons
 
 ### 5. WHO CAN SEE YOUR INFORMATION
 
-GITH administrators and authorised DICON staff who manage the programme. Evaluators assigned to your innovation, who see the innovation content and your name and location, but not your contact details. Sponsors and partners only after an introduction that you have agreed to, and only the information needed for that introduction. Service providers that process data for us, including Google Firebase (authentication, database, file storage and hosting) and our email providers, under appropriate confidentiality and security terms. Authorities where we are required to do so by law.
+GITH administrators and authorised DICON staff who manage the programme. Evaluators assigned to your innovation, who see the innovation content and your name and location, but not your contact details. Sponsors and partners only after an introduction that you have agreed to, and only the information needed for that introduction. Service providers that process data for us, under appropriate confidentiality and security terms: Google Firebase (account sign-in and the application database), Supabase (storage of the photos, documents and videos you upload), Brevo (sending email notifications), Vercel (hosting the website and its server functions) and, only if you allow it, Google Analytics (anonymous visitor statistics). Authorities where we are required to do so by law.
 
 We do not sell your personal data.
 
 ### 6. TRANSFERS OUTSIDE NIGERIA
 
-Our service providers may store or process data on servers outside Nigeria. Where this happens, we take steps to ensure the data remains protected in line with the NDPA, including contractual safeguards with our providers.
+The service providers listed in Section 5 may store or process data on servers outside Nigeria. Where this happens, we take steps to ensure the data remains protected in line with the NDPA, including contractual safeguards with our providers.
 
 ### 7. HOW LONG WE KEEP YOUR INFORMATION
 
@@ -73,7 +73,7 @@ These safeguards should include, as appropriate:
 
 Firebase Authentication and secure account-management procedures. Properly configured Firestore security rules. Restricted access to uploaded documents. Role-based access controls. Secure administrative accounts. Appropriate password and authentication practices. Secure transmission of information. Monitoring and logging of relevant administrative activities. Regular review of permissions. Secure backup and recovery procedures. Procedures for responding to suspected data breaches.
 
-Firebase provides security features such as encryption in transit and encryption at rest for supported services, but the security of the complete application also depends on how GITH is configured and operated.
+Our service providers offer security features such as encryption in transit and encryption at rest for supported services, but the security of the complete application also depends on how GITH is configured and operated.
 
 No digital system can guarantee absolute security. Users should avoid sharing passwords or uploading unnecessary sensitive information.
 
@@ -147,7 +147,7 @@ We may suspend or remove an account or submission that breaks these Terms, creat
 
 ### 15. THIRD-PARTY SERVICES
 
-The platform uses third-party services such as Google Firebase, email providers. We are not responsible for failures of those services outside our reasonable control.
+The platform uses third-party services, including Google Firebase, Supabase, Brevo and Vercel. We are not responsible for failures of those services outside our reasonable control.
 
 ### 16. DISCLAIMER
 
