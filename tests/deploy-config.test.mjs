@@ -14,9 +14,11 @@ function walk(dir = '') {
     return e.isDirectory() ? walk(p + '/') : ['/' + p];
   });
 }
+// Internal documents for DICON: kept in the repo, never published.
+const INTERNAL = ["/approval-pack.html","/cost-note.html","/docs/DICON-GITH-Approval-Pack.pdf","/docs/DICON-GITH-Cost-Note.pdf"];
 // What the public site is allowed to serve.
-const isPublic = (p) => /^\/[^/]+\.html$/.test(p) || /^\/(css|js|assets)\//.test(p)
-  || /^\/docs\/[^/]+\.pdf$/.test(p) || p === '/manifest.webmanifest';
+const isPublic = (p) => !INTERNAL.includes(p) && (/^\/[^/]+\.html$/.test(p) || /^\/(css|js|assets)\//.test(p)
+  || /^\/docs\/[^/]+\.pdf$/.test(p) || p === '/manifest.webmanifest');
 const privateFiles = () => walk().filter((p) => !isPublic(p));
 
 test('Netlify _redirects blocks every private file (Netlify has no mid-path wildcards)', () => {
@@ -38,7 +40,7 @@ test('Firebase Hosting ignores the functions, notes and config files', () => {
 test('Vercel: the catch-all rewrite comes last and every page has its clean URL', () => {
   const rw = JSON.parse(read('vercel.json')).rewrites;
   assert.equal(rw[rw.length - 1].source, '/(.*)');
-  ['/about', '/admin-guide', '/cost-note', '/approval-pack', '/evaluator', '/mentor', '/showcase']
+  ['/about', '/admin-guide', '/evaluator', '/mentor', '/showcase']
     .forEach((s) => assert.ok(rw.some((r) => r.source === s), s));
   const ignore = read('.vercelignore');
   ['netlify', '*.md', 'seed', 'tests', '.env.example'].forEach((n) => assert.match(ignore, new RegExp(`^${n.replace(/[.*]/g, '\\$&')}$`, 'm'), n));

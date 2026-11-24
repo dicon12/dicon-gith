@@ -37,6 +37,12 @@
 /docs/DICON-GITH-Admin-Guide.md    /404.html  404!
 /docs/DICON-GITH-Approval-Pack.md  /404.html  404!
 /docs/DICON-GITH-Cost-Note.md      /404.html  404!
+/approval-pack.html                /404.html  404!
+/cost-note.html                    /404.html  404!
+/docs/DICON-GITH-Approval-Pack.pdf /404.html  404!
+/docs/DICON-GITH-Cost-Note.pdf     /404.html  404!
+/approval-pack                     /404.html  404!
+/cost-note                         /404.html  404!
 
 # Clean URLs (same pages as vercel.json / firebase.json)
 /login            /login.html            200
@@ -50,6 +56,4 @@
 /mentor           /mentor.html           200
 /showcase         /showcase.html         200
 /admin-guide      /admin-guide.html      200
-/cost-note        /cost-note.html        200
-/approval-pack    /approval-pack.html    200
 /app              /dashboard.html        200

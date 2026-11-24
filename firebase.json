@@ -21,17 +21,13 @@
       "firestore.rules",
       "storage.rules",
       "firestore.indexes.json",
-      "api/**"
+      "api/**",
+      "approval-pack.html",
+      "cost-note.html",
+      "docs/DICON-GITH-Approval-Pack.pdf",
+      "docs/DICON-GITH-Cost-Note.pdf"
     ],
     "rewrites": [
-      {
-        "source": "/approval-pack",
-        "destination": "/approval-pack.html"
-      },
-      {
-        "source": "/cost-note",
-        "destination": "/cost-note.html"
-      },
       {
         "source": "/admin-guide",
         "destination": "/admin-guide.html"

@@ -59,7 +59,7 @@ We keep account and application records for as long as your account is active an
 
 Under the NDPA you may request to: be informed about how your data is used; access your data; have inaccurate data corrected; have your data erased where there is no continuing lawful reason to keep it; restrict or object to certain processing; receive your data in a portable format; and withdraw your consent at any time without affecting earlier lawful processing.
 
-To exercise these rights, contact the GITH Privacy Contact using the details in the Terms and Conditions. If you are unhappy with our response you may complain to the Nigeria Data Protection Commission (NDPC).
+To exercise these rights, email us at dicongith@gmail.com. If you are unhappy with our response you may complain to the Nigeria Data Protection Commission (NDPC).
 
 9. CHILDREN
 
@@ -73,9 +73,7 @@ We use browser storage and similar technologies to keep you signed in, save your
 
 We take the protection of personal information seriously.
 
-Appropriate safeguards should be implemented to protect information against unauthorized access, disclosure, alteration, loss, or destruction.
-
-These safeguards should include, as appropriate:
+We use safeguards to protect information against unauthorised access, disclosure, alteration, loss or destruction, including:
 
 Firebase Authentication and secure account-management procedures.
 Properly configured Firestore security rules.
@@ -86,16 +84,15 @@ Appropriate password and authentication practices.
 Secure transmission of information.
 Monitoring and logging of relevant administrative activities.
 Regular review of permissions.
-Secure backup and recovery procedures.
 Procedures for responding to suspected data breaches.
 
 Our service providers offer security features such as encryption in transit and encryption at rest for supported services, but the security of the complete application also depends on how GITH is configured and operated.
 
-No digital system can guarantee absolute security. Users should avoid sharing passwords or uploading unnecessary sensitive information.
+No digital system can guarantee absolute security. Please avoid sharing passwords or uploading unnecessary sensitive information.
 
 12. DATA BREACHES
 
-If a personal-data breach occurs, the responsible organization will assess the incident and take appropriate steps to contain, investigate, and remediate it.
+If a personal-data breach occurs, we will assess the incident and take appropriate steps to contain, investigate, and remediate it.
 
 Where notification is required, affected individuals and the relevant authorities will be notified in accordance with applicable legal requirements and timelines.
 
@@ -204,8 +201,6 @@ Any dispute that cannot be resolved informally will be handled in accordance wit
 
 Governing Law: The laws of the Federal Republic of Nigeria.
 
-Specific jurisdictional provisions should be confirmed by legal counsel before publication.
-
 22. CHANGES TO THESE TERMS
 
 We may update these Terms to reflect:
@@ -239,7 +234,7 @@ Support Email: dicongith@gmail.com
 
 Telephone / Secretariat: +234 703 592 2044
 
-For personal-data matters, contact the designated GITH Privacy Contact identified in the Privacy Policy.
+For personal-data matters, including requests under the Privacy Policy, email dicongith@gmail.com.
 
 24. FINAL PROVISIONS
 

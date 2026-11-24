@@ -23,3 +23,8 @@ _headers
 .vercel
 .gitattributes
 .gitignore
+# Internal documents for DICON (sent directly, not published)
+approval-pack.html
+cost-note.html
+docs/DICON-GITH-Approval-Pack.pdf
+docs/DICON-GITH-Cost-Note.pdf

@@ -46,7 +46,12 @@ const BLOCKED_PATHS = [
   '/storage.rules',
   '/firestore.indexes.json',
   '/_redirects',
-  '/_headers'
+  '/_headers',
+  // Internal documents for DICON (sent directly, not published). Lowercase: isBlocked compares lowercased paths.
+  '/approval-pack.html',
+  '/cost-note.html',
+  '/docs/dicon-gith-approval-pack.pdf',
+  '/docs/dicon-gith-cost-note.pdf'
 ];
 
 function isBlocked(reqPath) {
@@ -88,7 +93,7 @@ const server = http.createServer((req, res) => {
     reqPath = '/partner.html';
   } else if (reqPath === '/forgot-password') {
     reqPath = '/forgot-password.html';
-  } else if (['/admin-guide', '/cost-note', '/approval-pack'].includes(reqPath)) {
+  } else if (reqPath === '/admin-guide') {
     reqPath = reqPath + '.html';
   } else if (reqPath === '/dashboard' || reqPath.startsWith('/dashboard/')) {
     reqPath = '/dashboard.html';

@@ -57,14 +57,6 @@
       "destination": "/admin-guide.html"
     },
     {
-      "source": "/cost-note",
-      "destination": "/cost-note.html"
-    },
-    {
-      "source": "/approval-pack",
-      "destination": "/approval-pack.html"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
