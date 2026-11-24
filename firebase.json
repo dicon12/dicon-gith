@@ -1,0 +1,116 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "server.js",
+      "package.json",
+      "package-lock.json",
+      "Dockerfile",
+      "**/*.md",
+      "seed/**",
+      "tests/**",
+      "functions/**",
+      "netlify/**",
+      "netlify.toml",
+      "vercel.json",
+      "_redirects",
+      "_headers",
+      "firestore.rules",
+      "storage.rules",
+      "firestore.indexes.json",
+      "api/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/approval-pack",
+        "destination": "/approval-pack.html"
+      },
+      {
+        "source": "/cost-note",
+        "destination": "/cost-note.html"
+      },
+      {
+        "source": "/admin-guide",
+        "destination": "/admin-guide.html"
+      },
+      {
+        "source": "/login",
+        "destination": "/login.html"
+      },
+      {
+        "source": "/register",
+        "destination": "/register.html"
+      },
+      {
+        "source": "/about",
+        "destination": "/about.html"
+      },
+      {
+        "source": "/forgot-password",
+        "destination": "/forgot-password.html"
+      },
+      {
+        "source": "/partner",
+        "destination": "/partner.html"
+      },
+      {
+        "source": "/dashboard",
+        "destination": "/dashboard.html"
+      },
+      {
+        "source": "/app",
+        "destination": "/dashboard.html"
+      },
+      {
+        "source": "/admin",
+        "destination": "/admin.html"
+      },
+      {
+        "source": "/evaluator",
+        "destination": "/evaluator.html"
+      },
+      {
+        "source": "/mentor",
+        "destination": "/mentor.html"
+      },
+      {
+        "source": "/showcase",
+        "destination": "/showcase.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=63072000; includeSubDomains"
+          },
+          {
+            "key": "Permissions-Policy",
+            "value": "camera=(), microphone=(), geolocation=()"
+          }
+        ]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

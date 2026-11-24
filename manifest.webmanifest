@@ -1,0 +1,9 @@
+{
+  "name": "DICON GITH — Grassroot Innovations Talent Hunt",
+  "short_name": "DICON GITH",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F8F4",
+  "theme_color": "#116B45",
+  "icons": [{ "src": "/assets/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }]
+}

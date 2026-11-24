@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Showcase — DICON GITH</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--em:#0A3323;--gold:#C9A227;--line:#dfe5e2;--mut:#5f6f68}*{box-sizing:border-box}
+    body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#f5f7f6;color:#16231d}
+    header{background:var(--em);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+    header a{color:#fff;text-decoration:none;font-weight:700}header img{height:34px}
+    .hero{max-width:900px;margin:0 auto;padding:34px 18px 8px}.hero h1{margin:0 0 8px;font-size:30px}.hero p{color:var(--mut);margin:0}
+    .grid{max-width:900px;margin:0 auto;padding:16px 18px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+    .tag{display:inline-block;font-size:12px;font-weight:700;background:#d9f2e3;color:#0A5C36;border-radius:99px;padding:3px 10px;margin:0 6px 6px 0}.tag.g{background:#fef3c7;color:#7a5b00}
+    h3{margin:6px 0}.mut{color:var(--mut);font-size:13px}.cta{max-width:900px;margin:0 auto 40px;padding:0 18px}
+    .cta a{display:inline-block;background:var(--gold);color:#1b1400;font-weight:800;padding:12px 18px;border-radius:12px;text-decoration:none}
+  </style>
+  <link rel="stylesheet" href="/css/motion.css">
+</head>
+<body>
+  <header><div style="display:flex;align-items:center;gap:10px"><img src="/assets/logo.png" alt=""><b>DICON GITH</b></div><a href="/">Home</a></header>
+  <section class="hero"><h1>Innovation Showcase</h1><p>Grassroots innovations selected by GITH, shown here with the innovators' consent.</p></section>
+  <div class="grid" id="grid"><div class="card mut">Loading…</div></div>
+  <div class="cta"><a href="/partner">Partner with us to support these innovators</a></div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script type="module">
+    import { firebaseService } from '/js/firebase-config.js';
+    import { phase2 } from '/js/phase2-service.js';
+    const esc = (t) => String(t ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    await firebaseService.initLive();
+    let list = []; try { list = await phase2.getShowcase(true); } catch (e) { /* show empty state */ }
+    document.getElementById('grid').innerHTML = list.map(x => `<div class="card"><span class="tag">${esc(x.category)}</span>${x.stage ? `<span class="tag g">${esc(x.stage)}</span>` : ''}
+      <h3>${esc(x.title)}</h3><div class="mut">${esc(x.state)}</div><p>${esc(x.summary)}</p>
+      ${(x.supportNeeded || []).map(s => `<span class="tag g">Needs: ${esc(s)}</span>`).join('')}</div>`).join('') || '<div class="card mut">No innovations are on show yet. Please check back soon.</div>';
+  </script>
+  <script src="/js/motion.js" defer></script>
+</body>
+</html>

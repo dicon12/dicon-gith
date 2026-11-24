@@ -1,0 +1,9 @@
+node_modules
+.git
+.github
+tests
+.gemini
+.agents
+*.log
+.env
+.env.local

@@ -1,0 +1,23 @@
+# Files Vercel must not publish (gitignore syntax; "*.md" matches at any depth)
+tests
+functions
+netlify
+netlify.toml
+seed
+server.js
+package.json
+package-lock.json
+Dockerfile
+*.md
+firestore.rules
+storage.rules
+firestore.indexes.json
+firebase.json
+.firebaserc
+.env.example
+_redirects
+_headers
+.claude
+.env
+.env.*
+.vercel

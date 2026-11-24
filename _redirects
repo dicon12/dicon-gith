@@ -1,0 +1,54 @@
+# Netlify: block private/dev files from being served publicly.
+# Netlify only supports "*" at the END of a path, so patterns like "/*.md" do not work:
+# every private file is listed by name (tests/deploy-config.test.mjs checks none is missing).
+/tests/*                  /404.html  404!
+/functions/*              /404.html  404!
+/netlify/*                /404.html  404!
+/api/*                    /404.html  404!
+/seed/*                   /404.html  404!
+/netlify.toml             /404.html  404!
+/server.js                /404.html  404!
+/package.json             /404.html  404!
+/package-lock.json        /404.html  404!
+/Dockerfile               /404.html  404!
+/vercel.json              /404.html  404!
+/firebase.json            /404.html  404!
+/firestore.rules          /404.html  404!
+/storage.rules            /404.html  404!
+/firestore.indexes.json   /404.html  404!
+/.env.example             /404.html  404!
+/.env.local               /404.html  404!
+/.env                     /404.html  404!
+/.firebaserc              /404.html  404!
+/.gitignore               /404.html  404!
+/.dockerignore            /404.html  404!
+/.vercelignore            /404.html  404!
+/.claude/*                /404.html  404!
+/.vercel/*                /404.html  404!
+/README.md                /404.html  404!
+/SECURITY.md              /404.html  404!
+/APP_CHECK_SETUP.md       /404.html  404!
+/BACKUP_AND_ALERTS.md     /404.html  404!
+/BUILD_CHECKLIST.md       /404.html  404!
+/FLUTTERFLOW_SETUP.md     /404.html  404!
+/PHASE2_SPEC.md           /404.html  404!
+/SUPABASE_SETUP.md        /404.html  404!
+/docs/DICON-GITH-Admin-Guide.md    /404.html  404!
+/docs/DICON-GITH-Approval-Pack.md  /404.html  404!
+/docs/DICON-GITH-Cost-Note.md      /404.html  404!
+
+# Clean URLs (same pages as vercel.json / firebase.json)
+/login            /login.html            200
+/register         /register.html         200
+/forgot-password  /forgot-password.html  200
+/about            /about.html            200
+/partner          /partner.html          200
+/dashboard        /dashboard.html        200
+/admin            /admin.html            200
+/evaluator        /evaluator.html        200
+/mentor           /mentor.html           200
+/showcase         /showcase.html         200
+/admin-guide      /admin-guide.html      200
+/cost-note        /cost-note.html        200
+/approval-pack    /approval-pack.html    200
+/app              /dashboard.html        200

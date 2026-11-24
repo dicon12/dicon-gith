@@ -1,0 +1,15 @@
+/* DICON GITH - first-visit guide. Removed from the page completely when the guide ends. */
+.gt-spot{position:fixed;z-index:99998;border-radius:12px;pointer-events:none;box-shadow:0 0 0 9999px rgba(6,24,17,.68);outline:3px solid #E8B63A;outline-offset:3px;transition:top .25s,left .25s,width .25s,height .25s}
+.gt-spot::after{content:"";position:absolute;inset:-6px;border-radius:15px;border:2px solid #E8B63A;animation:gt-pulse 1.4s ease-out infinite}
+@keyframes gt-pulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.08)}}
+.gt-block{position:fixed;inset:0;z-index:99997;background:transparent}
+.gt-card{position:fixed;z-index:99999;width:min(340px,calc(100vw - 24px));background:#fff;color:#12261d;border-radius:14px;padding:16px 16px 12px;box-shadow:0 12px 40px rgba(0,0,0,.35);font:14px/1.45 "Plus Jakarta Sans",system-ui,sans-serif}
+.gt-card h4{margin:0 0 4px;font-size:16px;color:#0A3323}
+.gt-card p{margin:0 0 12px}
+.gt-row{display:flex;align-items:center;gap:8px}
+.gt-count{font-size:12px;color:#5f6f68;margin-right:auto}
+.gt-btn{border:1px solid #0A3323;background:#fff;color:#0A3323;border-radius:9px;padding:8px 14px;font:600 13px inherit;font-family:inherit;cursor:pointer}
+.gt-btn.gt-go{background:#0A3323;color:#fff}
+.gt-skip{border:0;background:none;color:#5f6f68;font:600 12px inherit;font-family:inherit;cursor:pointer;padding:8px 4px}
+@media (max-width:600px){.gt-card{left:12px!important;right:12px;bottom:12px;top:auto!important;width:auto}}
+@media (prefers-reduced-motion:reduce){.gt-spot,.gt-spot::after{animation:none;transition:none}}

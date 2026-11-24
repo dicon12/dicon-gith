@@ -1,0 +1,344 @@
+rules_version = '2';
+
+// DICON GITH APP - Phase 1 Firestore rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- helpers ----------
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && userDoc().role in ['admin', 'super_admin'];
+    }
+    // Phase 2: evaluators see only innovations an admin assigned to them.
+    // Assignment doc ID convention: {innovationId}_{evaluatorUid}
+    function isAssignedEvaluator(innovationId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/assignments/$(innovationId + '_' + request.auth.uid));
+    }
+    // Phase 3: mentors see only innovations an admin assigned to them.
+    // Mentorship doc ID convention: {innovationId}_{mentorUid}
+    function isAssignedMentor(innovationId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/mentorships/$(innovationId + '_' + request.auth.uid));
+    }
+    function isSuperAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && userDoc().role == 'super_admin';
+    }
+    // true if none of the listed fields were changed by this write
+    function untouched(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // Partner / sponsor request: shape + size checks for the public "Partner with us" form
+    // (js/partner-service.js). Sponsors are not signed in, so the rule validates the document
+    // itself instead of the user. Optional text fields are always present, possibly empty.
+    function validPartnerRequest(d) {
+      return d.keys().hasOnly(['organisationName', 'orgType', 'contactName', 'contactRole', 'email',
+                               'phone', 'website', 'offerTypes', 'offerDescription', 'commitment',
+                               'allCategories', 'categories', 'allStates', 'states', 'consent',
+                               'status', 'createdAt'])
+        && d.keys().hasAll(['organisationName', 'orgType', 'contactName', 'contactRole', 'email',
+                            'phone', 'website', 'offerTypes', 'offerDescription', 'commitment',
+                            'allCategories', 'categories', 'allStates', 'states', 'consent',
+                            'status', 'createdAt'])
+        && d.organisationName is string && d.organisationName.size() >= 2 && d.organisationName.size() <= 120
+        && d.orgType in ['Corporate / Company', 'Foundation / NGO', 'Government agency',
+                         'Academic / Research institution', 'Financial institution / Investor',
+                         'Individual sponsor']
+        && d.contactName is string && d.contactName.size() >= 2 && d.contactName.size() <= 100
+        && d.contactRole is string && d.contactRole.size() <= 100
+        && d.email is string && d.email.size() <= 160 && d.email.matches('^[^@ ]+@[^@ ]+\\.[^@ ]{2,}$')
+        && d.phone is string && d.phone.size() <= 20
+        && d.website is string && d.website.size() <= 200
+        && (d.website == '' || d.website.matches('^https?://[^ ]+$'))
+        && d.offerTypes is list && d.offerTypes.size() >= 1 && d.offerTypes.size() <= 8
+        && d.offerDescription is string && d.offerDescription.size() >= 20 && d.offerDescription.size() <= 2000
+        && d.commitment in ['', 'Exploratory conversation', 'One-off support',
+                            'Annual / recurring support', 'Multi-year partnership']
+        && d.allCategories is bool && d.categories is list && d.categories.size() <= 19
+        && d.allStates is bool && d.states is list && d.states.size() <= 37
+        && (d.allCategories || d.categories.size() >= 1)
+        && (d.allStates || d.states.size() >= 1)
+        && d.consent == true
+        && d.status == 'new'
+        && d.createdAt == request.time;
+    }
+
+    // ---------- users ----------
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+
+      // Self-registration is always "innovator", with the account's own sign-in email
+      allow create: if isOwner(uid)
+        && request.resource.data.uid == uid
+        && request.resource.data.email is string
+        && request.resource.data.email.lower() == request.auth.token.email.lower()
+        && request.resource.data.role == 'innovator'
+        && request.resource.data.isActive == true;
+
+      // Owner may edit profile but never role / uid / isActive / email (status emails go to `email`,
+      // so it must stay the address they signed up with).
+      // Admins may edit ordinary accounts and their own; only a super admin may edit another admin
+      // (e.g. deactivate them) or change a role (and only to a valid one).
+      allow update: if (isOwner(uid) && untouched(['role', 'uid', 'isActive', 'createdAt', 'email']))
+        || (isAdmin() && untouched(['role'])
+            && (request.auth.uid == uid || isSuperAdmin()
+                || resource.data.role in ['innovator', 'scout', 'evaluator', 'mentor']))
+        || (isSuperAdmin()
+            && request.auth.uid != uid
+            && request.resource.data.role in ['innovator', 'scout', 'evaluator', 'mentor', 'admin', 'super_admin']);
+
+      // Admins may remove an ordinary account (never themselves, never another admin).
+      allow delete: if isAdmin()
+        && request.auth.uid != uid
+        && resource.data.role in ['innovator', 'scout', 'evaluator', 'mentor'];
+    }
+
+    // ---------- innovations ----------
+    // status flow for users: draft -> submitted; returned -> submitted
+    // everything after "submitted" is admin-controlled.
+    //
+    // Fields an innovator may write (js/storage.js submitInnovation). Anything else on an innovation
+    // (lastReviewedBy, returnReason, later statusHistory entries, ...) is written only by admins.
+    function innovatorFields() {
+      return ['id', 'innovationId', 'referenceNumber', 'userId', 'innovatorName', 'title', 'innovationName',
+              'category', 'state', 'lga', 'community', 'teamName', 'problemDescription', 'problem',
+              'targetUsers', 'problemImportance', 'solutionDescription', 'solution', 'howItWorks',
+              'uniqueness', 'developmentStage', 'ipStatus', 'requiresIpSupport', 'supportNeeded',
+              'supportNote', 'imageUrls', 'videoUrls', 'documentUrls', 'status', 'submittedAt',
+              'createdAt', 'updatedAt'];
+    }
+    // A submitted innovation must carry a reference number reserved for this user and this innovation
+    // in /referenceNumbers (written in the same batch), so numbers are unique and cannot be borrowed.
+    function ownsReference(id, ref) {
+      return ref is string && ref.matches('^GITH-[0-9]{4}-[0-9]{6}$')
+        && existsAfter(/databases/$(database)/documents/referenceNumbers/$(ref))
+        && getAfter(/databases/$(database)/documents/referenceNumbers/$(ref)).data.userId == request.auth.uid
+        && getAfter(/databases/$(database)/documents/referenceNumbers/$(ref)).data.innovationId == id;
+    }
+    // On resubmission an innovator may append exactly one history entry recording their own status change;
+    // earlier entries (written by admins) must stay exactly as they were.
+    function validResubmitHistory() {
+      let before = resource.data.get('statusHistory', []);
+      let after = request.resource.data.get('statusHistory', []);
+      let n = before.size();
+      return after.size() == n + 1
+        && after[0:n] == before
+        && after[n].keys().hasOnly(['prevStatus', 'newStatus', 'note', 'timestamp'])
+        && after[n].prevStatus == resource.data.status
+        && after[n].newStatus == request.resource.data.status
+        && after[n].note is string && after[n].note.size() <= 300;
+    }
+    match /innovations/{id} {
+      // Only admins, the innovator who submitted it, and evaluators/mentors an admin assigned it to.
+      // Nobody else (other innovators, signed-out visitors) can read an innovation.
+      allow read: if (signedIn() && resource.data.userId == request.auth.uid)
+        || isAssignedEvaluator(id)
+        || isAssignedMentor(id)
+        || isAdmin();
+
+      // statusHistory: innovators may only write the single "submitted" entry when creating.
+      allow create: if (signedIn()
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.keys().hasOnly(innovatorFields().concat(['statusHistory']))
+          && (!('statusHistory' in request.resource.data)
+              || (request.resource.data.statusHistory is list && request.resource.data.statusHistory.size() <= 1))
+          && request.resource.data.status in ['draft', 'submitted']
+          && (request.resource.data.status == 'draft'
+              || ownsReference(id, request.resource.data.referenceNumber)));
+
+      allow update: if (signedIn()
+          && resource.data.userId == request.auth.uid
+          && resource.data.status in ['draft', 'returned']
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(innovatorFields().concat(['statusHistory']))
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['statusHistory'])
+              || validResubmitHistory())
+          && request.resource.data.userId == resource.data.userId
+          && request.resource.data.status in ['draft', 'submitted']
+          && (request.resource.data.status == 'draft'
+              || ownsReference(id, request.resource.data.referenceNumber)))
+        || isAdmin();
+
+      allow delete: if (signedIn()
+          && resource.data.userId == request.auth.uid
+          && resource.data.status == 'draft')
+        || isAdmin();
+    }
+
+    // ---------- referenceNumbers ----------
+    // Doc ID = the reference number. Create-only, so a duplicate can never be written
+    // (a second create on the same ID is treated as an update and denied).
+    match /referenceNumbers/{ref} {
+      allow create: if signedIn()
+        && ref.matches('^GITH-[0-9]{4}-[0-9]{6}$')
+        && request.resource.data.keys().hasOnly(['userId', 'innovationId', 'createdAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.innovationId is string;
+      allow read: if signedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if false;
+    }
+
+    // ---------- assignments (Phase 2) ----------
+    // Admin assigns an innovation to an evaluator. Doc ID = {innovationId}_{evaluatorId}.
+    match /assignments/{id} {
+      allow read: if (signedIn() && resource.data.evaluatorId == request.auth.uid) || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ---------- assessments (Phase 2) ----------
+    // Doc ID = {innovationId}_{evaluatorId}. Innovators can never read these.
+    // An evaluator edits their own draft score sheet until they set submitted = true; then it locks.
+    // Score sheet shape (js/phase2-service.js saveAssessment): six criteria scored 1-5,
+    // all six required once submitted, short comments, a known recommendation.
+    function criteria() {
+      return ['problemSignificance', 'originality', 'technicalFeasibility', 'communityImpact', 'scalability', 'teamCapability'];
+    }
+    function okScore(s, k) {
+      return !(k in s) || (s[k] is number && s[k] >= 1 && s[k] <= 5);
+    }
+    function okComment(c, k) {
+      return !(k in c) || (c[k] is string && c[k].size() <= 1000);
+    }
+    function validAssessment(d) {
+      return d.keys().hasOnly(['innovationId', 'evaluatorId', 'scores', 'comments', 'recommendation',
+                               'overallComment', 'submitted', 'updatedAt'])
+        && d.scores is map && d.scores.keys().hasOnly(criteria())
+        && okScore(d.scores, 'problemSignificance') && okScore(d.scores, 'originality')
+        && okScore(d.scores, 'technicalFeasibility') && okScore(d.scores, 'communityImpact')
+        && okScore(d.scores, 'scalability') && okScore(d.scores, 'teamCapability')
+        && d.comments is map && d.comments.keys().hasOnly(criteria())
+        && okComment(d.comments, 'problemSignificance') && okComment(d.comments, 'originality')
+        && okComment(d.comments, 'technicalFeasibility') && okComment(d.comments, 'communityImpact')
+        && okComment(d.comments, 'scalability') && okComment(d.comments, 'teamCapability')
+        && d.recommendation in ['', 'advance', 'hold', 'reject']
+        && d.overallComment is string && d.overallComment.size() <= 2000
+        && d.submitted is bool
+        && (d.submitted == false || d.scores.keys().hasAll(criteria()));
+    }
+    match /assessments/{id} {
+      allow read: if (signedIn() && resource.data.evaluatorId == request.auth.uid) || isAdmin();
+      allow create: if signedIn()
+        && request.resource.data.evaluatorId == request.auth.uid
+        && id == request.resource.data.innovationId + '_' + request.auth.uid
+        && exists(/databases/$(database)/documents/assignments/$(id))
+        && validAssessment(request.resource.data);
+      allow update: if (signedIn()
+          && resource.data.evaluatorId == request.auth.uid
+          && resource.data.submitted == false
+          && validAssessment(request.resource.data)
+          && request.resource.data.evaluatorId == resource.data.evaluatorId
+          && request.resource.data.innovationId == resource.data.innovationId)
+        || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ---------- notifications ----------
+    match /notifications/{id} {
+      allow read: if signedIn() && resource.data.userId == request.auth.uid || isAdmin();
+      allow create: if (signedIn()
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.isRead == false
+          && request.resource.data.type in ['welcome', 'profile_incomplete', 'submission_success'])
+        || isAdmin();
+      // users may only flip isRead
+      allow update: if (signedIn()
+          && resource.data.userId == request.auth.uid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead']))
+        || isAdmin();
+      allow delete: if (signedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+    }
+
+    // ---------- reference data (public read: needed on the registration form) ----------
+    match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /states/{id}     { allow read: if true; allow write: if isAdmin(); }
+    match /lgas/{id}       { allow read: if true; allow write: if isAdmin(); }
+
+    // ---------- settings (public read for policies, terms, about; admin write) ----------
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ---------- partnerRequests (public "Partner with us" form) ----------
+    // Create-only for the public: a sponsor cannot read back, edit or list requests. Admins
+    // review them (status, admin note) from the admin dashboard.
+    match /partnerRequests/{id} {
+      allow create: if validPartnerRequest(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ---------- sponsor matching (admin tools) ----------
+    // `sponsorReady`: doc id = innovationId; marks an innovation as ready to be put in front of sponsors.
+    // `introductions`: log of introductions between an innovation and a partner.
+    // Both are admin-only. Nothing is stored on the innovation document, so innovators can never
+    // tag their own work or see who it was introduced to.
+    match /sponsorReady/{id} {
+      allow read, write: if isAdmin();
+    }
+    match /introductions/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // ---------- verifications (Phase 2: admin-only site-visit / contact notes) ----------
+    match /verifications/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // ---------- events (Phase 2: "Upcoming Opportunities") ----------
+    // Anyone may read published events; only admins create/edit/delete, and see drafts.
+    match /events/{id} {
+      allow read: if resource.data.isPublished == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ---------- mentorships + mentor notes (Phase 3) ----------
+    match /mentorships/{id} {
+      allow read: if (signedIn() && resource.data.mentorId == request.auth.uid) || isAdmin();
+      allow write: if isAdmin();
+    }
+    // Notes are private to the mentor who wrote them and to admins. Innovators never see them.
+    match /mentorNotes/{id} {
+      allow read: if (signedIn() && resource.data.mentorId == request.auth.uid) || isAdmin();
+      allow create: if signedIn()
+        && request.resource.data.mentorId == request.auth.uid
+        && request.resource.data.note is string
+        && request.resource.data.note.size() > 0 && request.resource.data.note.size() <= 1000
+        && exists(/databases/$(database)/documents/mentorships/$(request.resource.data.innovationId + '_' + request.auth.uid));
+      allow update, delete: if isAdmin();
+    }
+
+    // ---------- showcase (public, admin-curated; only published entries are readable) ----------
+    match /showcase/{id} {
+      allow read: if resource.data.isPublished == true || isAdmin();
+      allow write: if isAdmin() && request.resource.data.consentConfirmed == true;
+      allow delete: if isAdmin();
+    }
+
+    // ---------- publicStats (landing-page counters; public read, written by admins from the admin dashboard) ----------
+    match /publicStats/{id} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['submissions', 'updatedAt'])
+        && request.resource.data.submissions is int;
+    }
+
+    // ---------- auditLogs ----------
+    // Only admins may write from a client (and must sign entries as themselves); Cloud Functions
+    // write with the Admin SDK and bypass rules. Ordinary users can no longer forge entries.
+    match /auditLogs/{id} {
+      allow create: if isAdmin() && request.resource.data.userId == request.auth.uid;
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /{document=**} { allow read, write: if false; }
+  }
+}

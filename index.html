@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DICON GITH — Grassroot Innovations Talent Hunt</title>
+  <meta name="description" content="Discovering Nigeria's Innovators from the Grassroots. DICON GITH provides a clear pathway for emerging inventors, makers, and problem-solvers across Nigeria.">
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+
+  <!-- Google Fonts: DM Serif Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Master Landing Page Stylesheet -->
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/legal.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- PWA + sharing metadata -->
+  <script>try{var t=localStorage.getItem("gith_theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#116B45">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DICON GITH — Grassroot Innovations Talent Hunt">
+  <meta property="og:description" content="Discovering Nigeria's innovators from the grassroots. Submit your innovation to DICON GITH.">
+  <meta property="og:image" content="/assets/innovator_main.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/css/motion.css">
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <a href="#main" class="skip-link" style="position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:3000;" onfocus="this.style.left='8px'" onblur="this.style.left='-999px'">Skip to content</a>
+
+  <!-- ==========================================================================
+       SECTION 1: HEADER AND NAVIGATION
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/" class="header-brand" aria-label="DICON GITH Home">
+        <img src="/assets/logo.png" alt="DICON GITH Logo" class="header-logo">
+        <div class="brand-text">
+          <span class="brand-title">DICON GITH</span>
+          <span class="brand-sub">Grassroot Innovations</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link">Home</a></li>
+          <li><a href="#innovation-areas" class="nav-link">Innovation Areas</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#partners" class="nav-link">Partners</a></li>
+          <li><a href="/partner" class="nav-link">Partner With Us</a></li>
+          <li><a href="#opportunities" class="nav-link">Opportunities</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="header-actions">
+        <a href="/login" class="header-login-link">Login</a>
+        <a href="/register" class="btn-landing btn-landing-amber" id="header-register-link">Register</a>
+        <a href="/about" class="header-login-link">About</a>
+        <button class="mobile-menu-toggle" id="btn-mobile-menu" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-drawer">
+      <a href="#">Home</a>
+      <a href="#innovation-areas">Innovation Areas</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#partners">Partners</a>
+      <a href="/partner">Partner With Us</a>
+      <a href="#opportunities">Opportunities</a>
+      <a href="#contact">Contact</a>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+        <a href="/login" class="btn-landing btn-landing-outline" style="text-align:center;">Login</a>
+        <a href="/register" class="btn-landing btn-landing-amber" style="text-align:center;" data-register-link>Register</a>
+        <a href="/about" class="btn-landing btn-landing-outline" style="text-align:center;">About GITH</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ==========================================================================
+         SECTION 2: HERO — DISCOVER THE INNOVATOR
+         Asymmetric Editorial Layout with Signature Slanted Capsule Collage
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-silhouette"></div>
+
+      <div class="container hero-grid">
+        <!-- Left Content Column (~44%) -->
+        <div class="hero-content">
+          <span class="eyebrow">GRASSROOT INNOVATIONS TALENT HUNT</span>
+          
+          <h1 class="serif-headline hero-headline">
+            Great ideas can come from anywhere.
+          </h1>
+
+          <p class="hero-rotator" aria-live="off">
+            <span class="rot-label">Calling all Nigerian</span>
+            <span class="rot-word" data-words="inventors|makers|engineers|farmers|coders|students|artisans">inventors</span>
+          </p>
+
+          <p class="hero-subheadline">
+            Let's discover the people turning local challenges into practical solutions.
+          </p>
+
+          <p class="hero-paragraph">
+            GITH creates a pathway for emerging innovators across Nigeria to present their ideas, demonstrate their work, and connect with opportunities to grow their impact.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="/dashboard#submit" class="btn-landing btn-landing-primary">
+              <span>Submit Your Innovation</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#about" class="btn-landing btn-landing-outline">
+              Explore GITH
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Photographic Composition (~56%) -->
+        <div class="hero-collage-wrapper" aria-hidden="true">
+          <!-- Subtle Accent Dots inspired by reference -->
+          <div class="accent-dot dot-amber-1"></div>
+          <div class="accent-dot dot-green-1"></div>
+          <div class="accent-dot dot-blue-1"></div>
+          <div class="accent-dot dot-amber-2"></div>
+
+          <!-- Slanted Pill Collage -->
+          <div class="hero-collage">
+            <!-- Pill 1 (Upper Left / Small) -->
+            <div class="collage-pill collage-pill-1">
+              <img src="/assets/students.jpg" alt="Students collaborating on technology">
+            </div>
+
+            <!-- Pill 2 (Center / Main Hero Subject) -->
+            <div class="collage-pill collage-pill-2">
+              <img src="/assets/innovator_main.jpg" alt="Determined young Nigerian technologist with circuit prototype">
+            </div>
+
+            <!-- Pill 3 (Center-Right / Innovation Team) -->
+            <div class="collage-pill collage-pill-3">
+              <img src="/assets/industrial.jpg" alt="Young Nigerian engineers assembling machine prototype">
+            </div>
+
+            <!-- Pill 4 (Lower Right / Amber Accent Brand Block) -->
+            <div class="collage-pill collage-pill-4">
+              <img src="/assets/sustainable.jpg" alt="Solar-powered agricultural technology hardware">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT STRIP (animated counters) -->
+    <section class="section-impact" aria-label="GITH at a glance">
+      <div class="container impact-grid">
+        <div class="impact-item"><div class="impact-number" data-count="36" data-suffix="+1">36+1</div><div class="impact-label">States &amp; FCT</div></div>
+        <div class="impact-item"><div class="impact-number" data-count="774">774</div><div class="impact-label">Local Governments</div></div>
+        <div class="impact-item"><div class="impact-number" data-count="3">3</div><div class="impact-label">Innovation Areas</div></div>
+        <div class="impact-item"><div class="impact-number" data-count="8">8</div><div class="impact-label">Stages to Incubation</div></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: INNOVATION AREAS
+         3 Photographic Cards in Horizontal Layout
+         ========================================================================== -->
+    <section class="section-innovation-areas" id="innovation-areas">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="eyebrow">WHAT WE SUPPORT</span>
+          <h2 class="serif-headline section-title">Ideas that move communities forward.</h2>
+          <p class="section-subtitle">
+            From practical inventions to emerging technologies, discover the many ways innovators are solving problems around them.
+          </p>
+        </div>
+
+        <div class="areas-grid">
+          <!-- Card 1: Digital & Emerging Tech -->
+          <article class="area-card">
+            <div class="area-image-wrap">
+              <img src="/assets/innovator_main.jpg" alt="Software, electronics, and digital solutions development">
+            </div>
+            <div class="area-content">
+              <span class="area-category">Category 01</span>
+              <h3 class="area-title">Digital & Emerging Technology</h3>
+              <p class="area-desc">
+                Software, artificial intelligence, robotics, electronics, and digital solutions that address real-world challenges.
+              </p>
+              <a href="/dashboard#submit" class="link-arrow">
+                <span>Explore area</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Sustainable Solutions -->
+          <article class="area-card">
+            <div class="area-image-wrap">
+              <img src="/assets/sustainable.jpg" alt="Solar energy and agricultural technology">
+            </div>
+            <div class="area-content">
+              <span class="area-category">Category 02</span>
+              <h3 class="area-title">Sustainable Solutions</h3>
+              <p class="area-desc">
+                Agriculture, renewable energy, water, environmental solutions, and technologies that improve everyday life.
+              </p>
+              <a href="/dashboard#submit" class="link-arrow">
+                <span>Explore area</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Industrial & Practical Innovation -->
+          <article class="area-card">
+            <div class="area-image-wrap">
+              <img src="/assets/industrial.jpg" alt="Industrial engineering and fabrication">
+            </div>
+            <div class="area-content">
+              <span class="area-category">Category 03</span>
+              <h3 class="area-title">Industrial & Practical Innovation</h3>
+              <p class="area-desc">
+                Prototypes, manufacturing, engineering, transportation, and locally developed products.
+              </p>
+              <a href="/dashboard#submit" class="link-arrow">
+                <span>Explore area</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: INTRODUCING GITH (ABOUT)
+         Spacious Centered Editorial Block
+         ========================================================================== -->
+    <section class="section-about" id="about">
+      <div class="container">
+        <div class="about-box">
+          <span class="eyebrow eyebrow-amber">ABOUT GITH</span>
+          <h2 class="serif-headline about-headline">
+            Talent is everywhere.<br>Opportunity should be, too.
+          </h2>
+          <p class="about-body">
+            GITH is designed to help bring grassroots innovation into view, creating a clearer pathway for promising ideas and the people behind them to be discovered.
+          </p>
+          <p class="about-body">
+            Whether an innovator is building a first prototype, developing a practical invention, or refining a solution for a community challenge, the journey begins with making that work visible.
+          </p>
+          <div class="about-cta-group">
+            <a href="#how-it-works" class="btn-landing btn-landing-primary">Discover Our Mission</a>
+            <a href="/dashboard#submit" class="btn-landing btn-landing-amber">Submit an Innovation</a>
+            <a href="/about" class="btn-landing btn-landing-outline" style="border-color:var(--deep-forest); color:var(--deep-forest);">Institutional Charter (11 Sections)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: FEATURED EDITORIAL STORY
+         Asymmetric Circular Photo Composition & Editorial Text
+         ========================================================================== -->
+    <section class="section-editorial-story">
+      <div class="container editorial-grid">
+        <!-- Left Side: Circular Photographic Composition -->
+        <div class="circular-composition-wrapper">
+          <div class="halftone-ring"></div>
+          
+          <!-- Main Circle -->
+          <div class="circle-main">
+            <img src="assets/innovator_main.jpg" alt="Young Nigerian innovator working on hardware solutions">
+          </div>
+
+          <!-- Satellite Circle 1 (Lower Left) -->
+          <div class="circle-satellite-1">
+            <img src="assets/industrial.jpg" alt="Nigerian engineers assembling hardware machine">
+          </div>
+
+          <!-- Satellite Circle 2 (Top Right) -->
+          <div class="circle-satellite-2">
+            <img src="assets/sustainable.jpg" alt="Agritech solar sensor development">
+          </div>
+        </div>
+
+        <!-- Right Side: Editorial Text -->
+        <div class="story-content">
+          <span class="eyebrow">INNOVATION IN ACTION</span>
+          <h2 class="serif-headline story-headline">
+            Local knowledge. Practical ideas. Lasting impact.
+          </h2>
+          <p class="story-body">
+            Some of the most useful solutions begin with a problem someone sees every day. GITH is built around the belief that these ideas deserve a clearer path to recognition, development, and opportunity.
+          </p>
+          <p class="story-body">
+            By bringing attention to grassroots talent and practical problem-solving, the platform aims to help promising innovations reach the people, resources, and networks that can help them grow.
+          </p>
+          <div style="margin-top:24px;">
+            <a href="#how-it-works" class="link-arrow" style="font-size:15px;">
+              <span>How GITH Works</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: THE INNOVATOR JOURNEY
+         Horizontal Connected Timeline
+         ========================================================================== -->
+    <section class="section-journey" id="how-it-works">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="eyebrow">THE PROCESS</span>
+          <h2 class="serif-headline section-title">Every innovation starts somewhere.</h2>
+          <p class="section-subtitle">
+            Give your idea a place to begin. GITH helps make the first steps clear.
+          </p>
+        </div>
+
+        <div class="journey-steps-grid">
+          <!-- Step 01 -->
+          <div class="journey-step-card">
+            <div class="step-num-badge">01</div>
+            <h3 class="step-title">Create Your Profile</h3>
+            <p class="step-desc">
+              Tell us about yourself, your skills, and where you are working from.
+            </p>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="journey-step-card">
+            <div class="step-num-badge">02</div>
+            <h3 class="step-title">Share Your Innovation</h3>
+            <p class="step-desc">
+              Explain the challenge you are addressing, your proposed solution, and its current stage of development.
+            </p>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="journey-step-card">
+            <div class="step-num-badge">03</div>
+            <h3 class="step-title">Submit for Review</h3>
+            <p class="step-desc">
+              Provide the information and supporting materials required for your application.
+            </p>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="journey-step-card">
+            <div class="step-num-badge">04</div>
+            <h3 class="step-title">Track Your Journey</h3>
+            <p class="step-desc">
+              Return to your dashboard to follow the recorded status of your submission.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: WHO CAN PARTICIPATE?
+         Editorial Composition with Participant Groups
+         ========================================================================== -->
+    <!-- EVALUATION PIPELINE -->
+    <section class="section-pipeline" id="pipeline">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="eyebrow">THE JOURNEY</span>
+          <h2 class="serif-headline section-title">From first idea to incubation.</h2>
+          <p class="section-subtitle">Every submission moves through a transparent, supportive review. You can follow your status in real time.</p>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-stage"><div class="pipeline-dot">1</div><div class="pipeline-name">Submitted</div><div class="pipeline-text">Your innovation is received and logged.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">2</div><div class="pipeline-name">Screening</div><div class="pipeline-text">A friendly check that the details are complete and in scope.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">3</div><div class="pipeline-name">Verification</div><div class="pipeline-text">Contact and, where needed, a site visit.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">4</div><div class="pipeline-name">Assessment</div><div class="pipeline-text">Reviewed independently by evaluators to understand its potential.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">5</div><div class="pipeline-name">Recommended</div><div class="pipeline-text">Innovations ready for deeper support move forward.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">6</div><div class="pipeline-name">Approved</div><div class="pipeline-text">Confirmed for GITH support by the review panel.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">7</div><div class="pipeline-name">Mentorship</div><div class="pipeline-text">Paired with experienced guides.</div></div>
+          <div class="pipeline-stage"><div class="pipeline-dot">8</div><div class="pipeline-name">Incubation</div><div class="pipeline-text">Support to build and scale.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-participants">
+      <div class="container participants-layout">
+        <!-- Left Photography -->
+        <div class="participants-photo-wrap">
+          <img src="/assets/students.jpg" alt="Nigerian youth engineers collaborating">
+        </div>
+
+        <!-- Right Content -->
+        <div>
+          <span class="eyebrow">INCLUSIVE ECOSYSTEM</span>
+          <h2 class="serif-headline" style="font-size:clamp(30px, 3.2vw, 42px); margin-bottom:14px;">
+            Built for people who see possibilities.
+          </h2>
+          <p style="font-size:15px; color:var(--muted-gray); margin-bottom:28px; line-height:1.6;">
+            GITH welcomes innovators from all backgrounds across Nigeria who are dedicated to creating solutions for national progress.
+          </p>
+
+          <div class="participants-grid">
+            <div class="participant-item">
+              <div class="participant-icon">🎓</div>
+              <div class="participant-name">Students & emerging talents</div>
+            </div>
+            <div class="participant-item">
+              <div class="participant-icon">⚙️</div>
+              <div class="participant-name">Independent inventors & makers</div>
+            </div>
+            <div class="participant-item">
+              <div class="participant-icon">🔬</div>
+              <div class="participant-name">Researchers & technical pros</div>
+            </div>
+            <div class="participant-item">
+              <div class="participant-icon">🚀</div>
+              <div class="participant-name">Founders & early innovators</div>
+            </div>
+            <div class="participant-item">
+              <div class="participant-icon">💡</div>
+              <div class="participant-name">Community problem-solvers</div>
+            </div>
+            <div class="participant-item">
+              <div class="participant-icon">🤝</div>
+              <div class="participant-name">Teams developing practical solutions</div>
+            </div>
+          </div>
+
+          <div style="margin-top:32px;">
+            <a href="/register" class="btn-landing btn-landing-green" style="display:inline-flex; align-items:center; gap:8px; padding:14px 24px; font-size:17px; font-weight:800; box-shadow:0 4px 12px rgba(10,51,35,0.15);">
+              🚀 Create Your Innovator Account →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7B: STRATEGIC PARTNERS & ALLIANCES
+         Clean Black & White Monochrome Institutional Logo Showcase
+         ========================================================================== -->
+    <section class="section-partners" id="partners">
+      <div class="container">
+        <div class="partners-header">
+          <span class="eyebrow eyebrow-amber">STRATEGIC ALLIANCES &amp; STAKEHOLDERS</span>
+          <h2 class="serif-headline section-title">Backed by Nigeria's leading institutions.</h2>
+          <p class="section-subtitle">
+            DICON GITH unites state executive leadership, federal regulatory bodies, tertiary academic hubs, financial institutions, and grassroots ambassadors to discover and scale indigenous ingenuity.
+          </p>
+        </div>
+
+        <div class="partners-grid">
+          <!-- Flagship Partner: GITH Ambassadors -->
+          <div class="partner-flagship-card">
+            <div class="partner-flagship-left">
+              <div class="partner-flagship-logo" aria-label="GITH Ambassadors Seal">
+                <!-- Star & Coat of Arms Wreath Motif in Monochrome -->
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 2l2.6 5.8L21 8.7l-4.7 4.6 1.1 6.6L12 16.8 6.6 19.9l1.1-6.6L3 8.7l6.4-.9L12 2z"></path>
+                  <circle cx="12" cy="12" r="9" stroke-dasharray="2 3"></circle>
+                </svg>
+              </div>
+              <div>
+                <span class="partner-flagship-badge">National Youth Leadership Network</span>
+                <h3 class="partner-flagship-title">GITH Ambassadors</h3>
+                <p class="partner-flagship-desc">
+                  Children of Nigeria's <strong>36 State Governors</strong> and <strong>Council Chairmen of the 774 Local Government Areas</strong> serving as dedicated grassroots ambassadors to mobilize, mentor, and advocate for young inventors nationwide.
+                </p>
+              </div>
+            </div>
+            <div class="partner-flagship-stats">
+              <div class="partner-stat-pill">
+                <div class="partner-stat-number" data-count="36">36</div>
+                <div class="partner-stat-label">States &amp; FCT</div>
+              </div>
+              <div class="partner-stat-pill">
+                <div class="partner-stat-number" data-count="774">774</div>
+                <div class="partner-stat-label">LGAs Mobilized</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Partner 2: SMEDAN -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="SMEDAN Logo">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Sprouting enterprise plant inside industrial hexagon -->
+                <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"></path>
+                <path d="M12 8v10M8.5 13c1.5-2 3.5-2 3.5-5 0 3 2 3 3.5 5"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">MSME Development</span>
+            <h4 class="partner-card-title">SMEDAN</h4>
+            <p class="partner-card-subtext">Small &amp; Medium Enterprises Development Agency of Nigeria</p>
+          </div>
+
+          <!-- Partner 3: NDE -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="NDE Logo">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Vocational Gear & Cooperative Hands -->
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v10M7 12h10"></path>
+                <path d="M8 8l8 8M8 16l8-8"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">Skills &amp; Employment</span>
+            <h4 class="partner-card-title">NDE</h4>
+            <p class="partner-card-subtext">National Directorate of Employment</p>
+          </div>
+
+          <!-- Partner 4: FIRS -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="FIRS Logo">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Federal Revenue Crest & Shield -->
+                <path d="M12 2L4 5v6.5C4 16.8 7.4 21 12 22c4.6-1 8-5.2 8-10.5V5l-8-3z"></path>
+                <path d="M8 11h8M12 7v8"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">Fiscal Formalization</span>
+            <h4 class="partner-card-title">FIRS</h4>
+            <p class="partner-card-subtext">Federal Inland Revenue Service</p>
+          </div>
+
+          <!-- Partner 5: NEMA -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="NEMA Logo">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Emergency Management & Life Safety Cross -->
+                <path d="M12 2v20M2 12h20"></path>
+                <rect x="5" y="5" width="14" height="14" rx="3"></rect>
+              </svg>
+            </div>
+            <span class="partner-badge">Emergency &amp; Safety</span>
+            <h4 class="partner-card-title">NEMA</h4>
+            <p class="partner-card-subtext">National Emergency Management Agency</p>
+          </div>
+
+          <!-- Partner 7: Universities -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="Universities Seal">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Academic Mortarboard & Scroll -->
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c0 3 3 5 6 5s6-2 6-5v-5"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">Tertiary Research</span>
+            <h4 class="partner-card-title">Universities</h4>
+            <p class="partner-card-subtext">Federal, State &amp; Private University Laboratories</p>
+          </div>
+
+          <!-- Partner 8: Polytechnics -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="Polytechnics Seal">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Technical Calipers & Cog -->
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">Applied Engineering</span>
+            <h4 class="partner-card-title">Polytechnics</h4>
+            <p class="partner-card-subtext">Technical Colleges &amp; Practical Fabrication Institutes</p>
+          </div>
+
+          <!-- Partner 9: Secondary Schools -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="Secondary Schools Seal">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Torch of Knowledge & STEM Atom -->
+                <path d="M12 2l2 4h-4l2-4zM12 6v16M8 10h8"></path>
+                <circle cx="12" cy="14" r="6" stroke-dasharray="3 2"></circle>
+              </svg>
+            </div>
+            <span class="partner-badge">Junior STEM Pipeline</span>
+            <h4 class="partner-card-title">Secondary Schools</h4>
+            <p class="partner-card-subtext">Junior &amp; Senior Secondary Science &amp; Maker Clubs</p>
+          </div>
+
+          <!-- Partner 10: Banks -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="Banks Seal">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Financial Colonnade & Pillars -->
+                <path d="M3 21h18M3 10h18M12 3l9 7H3l9-7z"></path>
+                <path d="M5 10v8M9 10v8M15 10v8M19 10v8"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">Development Finance</span>
+            <h4 class="partner-card-title">Banks</h4>
+            <p class="partner-card-subtext">Deposit Money Banks &amp; Development Institutions</p>
+          </div>
+
+          <!-- Partner 11: Innovation Hubs -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="Innovation Hubs Emblem">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Network Nodes & Hexagonal Hardware Hub -->
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <span class="partner-badge">Incubation Labs</span>
+            <h4 class="partner-card-title">Innovation Hubs</h4>
+            <p class="partner-card-subtext">Makerspaces, Hardware Accelerators &amp; FabLabs</p>
+          </div>
+
+          <!-- Partner 12: Corporate Bodies -->
+          <div class="partner-card">
+            <div class="partner-logo-box" aria-label="Corporate Bodies Seal">
+              <svg class="partner-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <!-- Corporate Industrial Headquarters & Scaled Enterprise -->
+                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                <path d="M10 6h4M10 10h4M10 14h4M10 18h4"></path>
+              </svg>
+            </div>
+            <span class="partner-badge">Organized Industry</span>
+            <h4 class="partner-card-title">Corporate Bodies</h4>
+            <p class="partner-card-subtext">Industrial Conglomerates, Energy &amp; Offtake Partners</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:40px;">
+          <p style="font-size:17px; color:var(--dark-ink); margin-bottom:16px;">Represent a company, foundation or institution that wants to back grassroots innovators?</p>
+          <a href="/partner" class="btn-landing btn-landing-green">Partner with us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8: INNOVATION SPOTLIGHT
+         Featured Project Showcase
+         ========================================================================== -->
+    <section class="section-spotlight" id="opportunities">
+      <div class="container">
+        <div class="section-header-centered" style="margin-bottom:32px;">
+          <span class="eyebrow eyebrow-amber">COMMUNITY SPOTLIGHT</span>
+          <h2 class="serif-headline section-title">See what people are building.</h2>
+          <p class="section-subtitle">
+            Explore ideas, prototypes, and practical solutions emerging from different communities across Nigeria.
+          </p>
+        </div>
+
+        <div class="spotlight-cards-stack" style="display:flex; flex-direction:column; gap:36px; margin-top:36px;">
+          <!-- Spotlight Project 1: CATCH-AM -->
+          <article class="spotlight-card" style="margin-top:0;">
+            <div class="spotlight-image-wrap">
+              <img src="/assets/catcham-spotlight.jpg" alt="CATCH-AM National Crime Intelligence and Public Safety Platform">
+              <span class="spotlight-badge">Public Safety &amp; Intelligence</span>
+            </div>
+
+            <div class="spotlight-content">
+              <span style="font-size:12px; font-weight:700; color:var(--deep-forest); text-transform:uppercase; letter-spacing:0.05em;">Featured Project · DICON Mandate</span>
+              <h3 class="serif-headline spotlight-title">CATCH-AM — Crime Intelligence &amp; Public Safety</h3>
+              <p class="spotlight-desc">
+                A national technology infrastructure connecting citizens, law enforcement, and regulatory bodies across Nigeria for rapid multi-agency incident reporting, critical asset protection, whistleblower privacy, and judicial evidence custody.
+              </p>
+
+              <div class="spotlight-meta-row" style="flex-wrap:wrap; gap:16px;">
+                <div>Stage: <strong>Active Deployment</strong></div>
+                <div>Coverage: <strong>37 States &amp; FCT</strong></div>
+                <div>Alliance: <strong>DICON &amp; CREDICORP</strong></div>
+              </div>
+
+              <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+                <a href="https://catcham-eight.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-landing btn-landing-primary" id="btn-spotlight-catcham">
+                  <span>Explore CATCH-AM Platform</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="/dashboard#tracking" class="btn-landing btn-landing-outline">
+                  <span>View GITH Tracking</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Spotlight Project 2: Fitrova -->
+          <article class="spotlight-card" style="margin-top:0;">
+            <div class="spotlight-image-wrap">
+              <img src="/assets/fitrova-spotlight.jpg" alt="Fitrova AI Fitness and Nutrition Coach Platform">
+              <span class="spotlight-badge" style="background:#0D1321; border:1px solid rgba(19,236,19,0.5); color:#13EC13;">AI &amp; HealthTech</span>
+            </div>
+
+            <div class="spotlight-content">
+              <span style="font-size:12px; font-weight:700; color:var(--deep-forest); text-transform:uppercase; letter-spacing:0.05em;">Featured Project · Digital Health &amp; AI</span>
+              <h3 class="serif-headline spotlight-title">Fitrova — Your AI Fitness &amp; Nutrition Coach</h3>
+              <p class="spotlight-desc">
+                An intelligent fitness and wellness ecosystem delivering personalized adaptive workouts, computer vision posture and form feedback, and targeted nutrition tracking to elevate physical fitness across Nigerian communities.
+              </p>
+
+              <div class="spotlight-meta-row" style="flex-wrap:wrap; gap:16px;">
+                <div>Stage: <strong>Live Web Application</strong></div>
+                <div>Focus: <strong>AI Coaching &amp; Telemetry</strong></div>
+                <div>Domain: <strong>Digital Health &amp; Wellness</strong></div>
+              </div>
+
+              <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+                <a href="https://fitrova-backend.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-landing btn-landing-primary" id="btn-spotlight-fitrova">
+                  <span>Explore Fitrova Platform</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="/dashboard#tracking" class="btn-landing btn-landing-outline">
+                  <span>View GITH Tracking</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 9: PARTICIPATION CTA
+         Full-width Deep Forest Green Banner
+         ========================================================================== -->
+    <!-- FAQ -->
+    <section class="section-faq" id="faq">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="eyebrow">GOOD TO KNOW</span>
+          <h2 class="serif-headline section-title">Questions, answered.</h2>
+          <p class="section-subtitle">Everything you need before you submit your innovation.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Who can take part in GITH?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>Any Nigerian with a practical idea or working prototype: students, independent inventors and makers, researchers, founders and community problem-solvers. You do not need a company or a formal qualification.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What kinds of innovations are accepted?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>Three areas: Digital &amp; Emerging Technology, Sustainable Solutions (agriculture, energy, water, environment) and Industrial &amp; Practical Innovation.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>I am a company or sponsor. How can I support innovators?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>Use the <a href="/partner">Partner with us</a> page to tell us what you can offer and which categories or states interest you. Our team will follow up.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Does it cost anything to submit?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>No. Creating an account and submitting an innovation is free.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Do I keep ownership of my idea?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>The submission form includes an intellectual-property declaration. Read the Terms &amp; Conditions and Privacy Policy in the footer for the details before you submit.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Can I save my submission and finish later?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>Yes. Your progress is auto-saved as a draft, so you can return from the Applications section of your dashboard and continue.</p></div></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How will I know where my submission stands?</span><span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><div><p>Your dashboard shows a live status timeline and you receive an in-app notification at every stage change. If something is missing, your submission is returned with a reason so you can fix and resubmit.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-participation-cta">
+      <div class="container">
+        <div class="cta-box">
+          <span class="eyebrow" style="color:var(--warm-amber); margin-bottom:14px;">TAKE THE FIRST STEP</span>
+          <h2 class="serif-headline cta-headline">
+            Your idea deserves to be seen.
+          </h2>
+          <p class="cta-subtext">
+            Start with what you know, the problem you want to solve, and the solution you are working to build. GITH is ready to receive your innovation.
+          </p>
+          <div class="cta-buttons-group">
+            <a href="/dashboard#submit" class="btn-landing btn-landing-amber">
+              <span>Submit Your Innovation</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#about" class="btn-landing btn-landing-ghost">
+              Learn About GITH
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SECTION 10: FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand Summary Column -->
+        <div class="footer-brand-wrap">
+          <div class="footer-logo-row">
+            <img src="/assets/logo.png" alt="DICON GITH Logo" class="footer-logo">
+            <div>
+              <div class="footer-brand-title">DICON GITH</div>
+              <div class="footer-brand-sub">Grassroot Innovations</div>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Discovering Nigeria's innovators from the grassroots. From Ideas to Impact.
+          </p>
+        </div>
+
+        <!-- Column 1: Explore -->
+        <div>
+          <h4 class="footer-col-title">Explore</h4>
+          <ul class="footer-links-list">
+            <li><a href="/about">About GITH</a></li>
+            <li><a href="#innovation-areas">Innovation Areas</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#opportunities">Innovation Spotlight</a></li>
+            <li><a href="/partner">Partner With Us</a></li>
+            <li><a href="https://postcode.gov.ng/find" target="_blank" rel="noopener noreferrer">NIPOST Digital Postcode ↗</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Participate -->
+        <div>
+          <h4 class="footer-col-title">Participate</h4>
+          <ul class="footer-links-list">
+            <li><a href="/register">Create Profile</a></li>
+            <li><a href="/dashboard#submit">Submit Innovation</a></li>
+            <li><a href="/login">Login to Portal</a></li>
+            <li><a href="/dashboard#innovations">My Applications</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact & Legal -->
+        <div>
+          <h4 class="footer-col-title">Contact & Secretariat</h4>
+          <ul class="footer-links-list">
+            <li><a href="mailto:dicongith@gmail.com" style="color:#FEF3C7; font-weight:700;">dicongith@gmail.com</a></li>
+            <li><a href="tel:+2347035922044" style="color:#FEF3C7; font-weight:700;">+234 703 592 2044</a></li>
+            <li><a href="/about#contact-secretariat">Kaduna Headquarters Desk</a></li>
+            <li><a href="#" id="link-footer-privacy" data-legal="privacy">Privacy Policy</a></li>
+            <li><a href="#" id="link-footer-terms" data-legal="terms">Terms & Conditions</a></li>
+            <li><a href="/about">About GITH Charter</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>
+          © <span id="current-year">2026</span> DICON GITH — Grassroot Innovations Talent Hunt. All rights reserved.
+        </div>
+        <div style="font-size:12px; color:#9CA3AF;">
+          Defence Industries Corporation of Nigeria (DICON)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Scripts (Mobile menu toggle, Smooth scroll, Year) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dynamic Year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Mobile Menu Toggle
+      const menuBtn = document.getElementById('btn-mobile-menu');
+      const drawer = document.getElementById('mobile-drawer');
+      if (menuBtn && drawer) {
+        menuBtn.addEventListener('click', () => {
+          drawer.classList.toggle('active');
+          menuBtn.textContent = drawer.classList.contains('active') ? '✕' : '☰';
+        });
+      }
+
+      // Smooth scroll for internal in-page anchors
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const el = document.querySelector(targetId);
+            if (el) {
+              e.preventDefault();
+              if (drawer) drawer.classList.remove('active');
+              if (menuBtn) menuBtn.textContent = '☰';
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+      // Auth-aware Navigation: direct unauthenticated submit requests through login
+      try {
+        const raw = localStorage.getItem('dicon_gith_user');
+        const user = raw ? JSON.parse(raw) : null;
+        const isLoggedIn = user && user.uid && user.email;
+        const loginLinks = document.querySelectorAll('a[href="/login"]');
+        const submitLinks = document.querySelectorAll('a[href="/dashboard#submit"]');
+
+        if (isLoggedIn) {
+          const dest = (user.role === 'admin' || user.role === 'super_admin') ? '/admin' : '/dashboard';
+          loginLinks.forEach(link => {
+            link.textContent = 'Dashboard';
+            link.setAttribute('href', dest);
+          });
+          document.querySelectorAll('#header-register-link, [data-register-link]').forEach(el => { el.style.display = 'none'; });
+        } else {
+          submitLinks.forEach(link => {
+            link.setAttribute('href', '/login?redirect=%2Fdashboard%23submit');
+          });
+        }
+      } catch (err) {}
+    });
+  </script>
+
+  <button class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+  <script src="/js/landing-fx.js" defer></script>
+  <script src="/js/landing-i18n.js" defer></script>
+
+  <!-- Legal Policies & Institutional Content Handler -->
+  <script type="module">
+    import { legalContentService } from '/js/legal-content.js';
+    legalContentService.initTriggers();
+  </script>
+  <script src="/js/motion.js" defer></script>
+  <script src="/js/analytics.js" defer></script>
+<script src="/js/tour.js" defer></script>
+<script src="/js/site-config.js" defer></script>
+</body>
+</html>
